@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default */
 import sha1 from 'sha1';
 import { Request } from 'express';
 import mongoDBCore from 'mongodb/lib/core';

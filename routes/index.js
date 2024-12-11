@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Importing necessary modules and controllers
 import { Express } from 'express';
 import AppController from '../controllers/AppController';

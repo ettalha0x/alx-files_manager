@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default */
 import { Request, Response, NextFunction } from 'express';
 
 export class APIError extends Error {
