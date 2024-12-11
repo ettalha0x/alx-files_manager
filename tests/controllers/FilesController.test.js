@@ -1,22 +1,30 @@
+
 /* eslint-disable import/no-named-as-default */
+
+// Import necessary modules
 import { tmpdir } from 'os';
 import { join as joinPath } from 'path';
 import { existsSync, readdirSync, unlinkSync, statSync } from 'fs';
 import dbClient from '../../utils/db';
 
+// Describe the FilesController
 describe('+ FilesController', () => {
+  // Define the base directory for file operations
   const baseDir = `${process.env.FOLDER_PATH || ''}`.trim().length > 0
     ? process.env.FOLDER_PATH.trim()
     : joinPath(tmpdir(), DEFAULT_ROOT_FOLDER);
+
+  // Define a mock user
   const mockUser = {
-    email: 'katakuri@bigmom.com',
-    password: 'mochi_mochi_whole_cake',
+    email: 'dsfssdf@bigmom.com',
+    password: 'sdfadsfasdfads45',
   };
+
   /**
-   * 3 sample files
-   * + 1 -> file
-   * + 2 -> folder
-   * + 3 -> file for file 2
+   * Define an array of mock files:
+   * - 1st file: manga_titles.txt
+   * - 2nd folder: One_Piece
+   * - 3rd file: chapter_titles.md
    */
   const mockFiles = [
     {
@@ -51,7 +59,11 @@ describe('+ FilesController', () => {
       b64Data() { return Buffer.from(this.data, 'utf-8').toString('base64'); },
     },
   ];
+
+  // Initialize the token variable
   let token = '';
+
+  // Define a function to empty a folder
   const emptyFolder = (name) => {
     if (!existsSync(name)) {
       return;
@@ -65,6 +77,8 @@ describe('+ FilesController', () => {
       }
     }
   };
+
+  // Define a function to empty database collections
   const emptyDatabaseCollections = (callback) => {
     Promise.all([dbClient.usersCollection(), dbClient.filesCollection()])
       .then(([usersCollection, filesCollection]) => {
@@ -77,6 +91,7 @@ describe('+ FilesController', () => {
           .catch((deleteErr) => done(deleteErr));
       }).catch((connectErr) => done(connectErr));
   };
+
   const signUp = (user, callback) => {
     request.post('/users')
       .send({ email: user.email, password: user.password })

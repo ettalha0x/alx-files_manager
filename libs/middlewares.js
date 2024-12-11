@@ -1,8 +1,9 @@
 import express from 'express';
 
 /**
- * Adds middlewares to the given express application.
- * @param {express.Express} api The express application.
+ * Injects middlewares into the API.
+ * @param {Object} api - The API object.
+ * @returns {void}
  */
 const injectMiddlewares = (api) => {
   api.use(express.json({ limit: '200mb' }));

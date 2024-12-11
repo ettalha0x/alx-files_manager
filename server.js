@@ -3,6 +3,10 @@ import startServer from './libs/boot';
 import injectRoutes from './routes';
 import injectMiddlewares from './libs/middlewares';
 
+/**
+ * The server instance for the files manager application.
+ * @type {Express}
+ */
 const server = express();
 
 injectMiddlewares(server);
